@@ -3,3 +3,6 @@ pip install torch
 pip install librosa
 pip install sounddevice
 pip install openai-whisper
+
+pip install vosk
+pip install ffmpeg-python
