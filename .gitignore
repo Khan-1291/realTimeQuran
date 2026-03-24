@@ -2,5 +2,6 @@ venv/
 __pycache__/
 *.pyc
 .env
-datasets
-vosk-model-ar-0.22-linto-1.1.0
+.tmp/
+dataset/
+models/

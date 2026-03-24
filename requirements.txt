@@ -1,0 +1,8 @@
+faster-whisper
+sounddevice
+numpy
+rapidfuzz
+tqdm
+fastapi
+uvicorn
+websockets

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qur'an Recitation Checker</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Live Qur'an Guidance</p>
+        <h1>Recite with real-time correction and ayah tracking.</h1>
+        <p class="hero-text">
+          Choose a surah, start the microphone, and watch the checker compare your recitation
+          against the expected ayah instantly.
+        </p>
+      </div>
+      <div class="hero-badge">
+        <span class="badge-label">Backend</span>
+        <span id="health-pill" class="status-pill idle">Checking...</span>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel controls-panel">
+        <div class="panel-header">
+          <h2>Session Setup</h2>
+          <p>Pick the surah and ayah where the student should begin.</p>
+        </div>
+
+        <div class="field-grid">
+          <label class="field">
+            <span>Surah</span>
+            <select id="surah-select"></select>
+          </label>
+
+          <label class="field">
+            <span>Start Ayah</span>
+            <select id="ayah-select"></select>
+          </label>
+        </div>
+
+        <div class="action-row">
+          <button id="create-session-btn" class="button secondary">Create Session</button>
+          <button id="start-btn" class="button primary" disabled>Start Recitation</button>
+          <button id="stop-btn" class="button muted" disabled>Stop</button>
+        </div>
+
+        <div class="session-meta">
+          <div>
+            <span class="meta-label">Session ID</span>
+            <strong id="session-id">-</strong>
+          </div>
+          <div>
+            <span class="meta-label">Current Ayah</span>
+            <strong id="current-ayah">-</strong>
+          </div>
+          <div>
+            <span class="meta-label">Recorder</span>
+            <strong id="recorder-state">Idle</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel live-panel">
+        <div class="panel-header">
+          <h2>Live Recitation</h2>
+          <p>Corrections update as microphone chunks arrive from the browser.</p>
+        </div>
+
+        <div class="live-grid">
+          <article class="card highlight">
+            <span class="card-label">Expected</span>
+            <p id="expected-text" class="arabic-text">-</p>
+          </article>
+
+          <article class="card">
+            <span class="card-label">Recognized</span>
+            <p id="recognized-text" class="arabic-text">-</p>
+          </article>
+        </div>
+
+        <div class="feedback-grid">
+          <article class="feedback-block">
+            <span class="card-label">Status</span>
+            <p id="status-text" class="status-text">Waiting for session</p>
+          </article>
+
+          <article class="feedback-block">
+            <span class="card-label">Similarity</span>
+            <p id="similarity-text" class="metric-text">0%</p>
+          </article>
+
+          <article class="feedback-block">
+            <span class="card-label">Missing Words</span>
+            <p id="missing-text" class="arabic-text small">-</p>
+          </article>
+
+          <article class="feedback-block">
+            <span class="card-label">Incorrect Words</span>
+            <p id="incorrect-text" class="arabic-text small">-</p>
+          </article>
+        </div>
+
+        <div class="ayah-list-wrap">
+          <div class="panel-header compact">
+            <h2>Surah Ayahs</h2>
+            <p>The active ayah stays highlighted while recitation progresses.</p>
+          </div>
+          <div id="ayah-list" class="ayah-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
